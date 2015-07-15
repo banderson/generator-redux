@@ -2,14 +2,20 @@
   "name": "generator-redux",
   "version": "0.1.0",
   "description": "A CLI tool for getting started with Redux and Redux-devtools",
-  "main": "index.js",
+  "license": "MIT",
+  "main": "app/index.js",
+  "repository": "banderson/generator-redux",
+  "author": {
+    "name": "Ben Anderson",
+    "email": "banderson87@gmail.com",
+    "url": "https://github.com/banderson"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/banderson/generator-redux"
-  },
+  "files": [
+    "generators"
+  ],
   "keywords": [
     "redux",
     "react",
@@ -19,10 +25,12 @@
     "yeoman",
     "yeoman-generator"
   ],
-  "author": "Ben Anderson <banderson87@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/banderson/generator-redux/issues"
+  "dependencies": {
+    "yeoman-generator": "^0.19.0",
+    "chalk": "^1.0.0",
+    "yosay": "^1.0.2"
   },
-  "homepage": "https://github.com/banderson/generator-redux"
+  "devDependencies": {
+    "mocha": "*"
+  }
 }
