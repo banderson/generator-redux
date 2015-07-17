@@ -1,5 +1,7 @@
 {
   "name": "package",
   "version": "0.0.0",
-  "dependencies": {}
+  "dependencies": {
+    "redux": "^1.0.0"
+  }
 }

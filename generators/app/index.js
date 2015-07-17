@@ -27,6 +27,28 @@ module.exports = yeoman.generators.Base.extend({
     }.bind(this));
   },
 
+  configuring: {
+    libraries: function() {
+      this.npmInstall([
+        'react', 'react-redux', 'redux-devtools',
+        'redux-thunk', 'lodash'
+      ], {'save': true });
+    },
+
+    buildTools: function() {
+      this.npmInstall([
+        'webpack', 'webpack-dev-server', 'css-loader',
+        'babel-core', 'babel-loader', 'react-hot-loader'
+      ], {'saveDev': true });
+    },
+
+    polyfills: function() {
+      this.npmInstall([
+        'babel-runtime'//, 'es6-promise', 'whatwg-fetch'
+      ], {'save': true });
+    }
+  },
+
   writing: {
     app: function () {
       this.fs.copy(
