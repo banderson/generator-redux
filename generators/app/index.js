@@ -59,6 +59,17 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('_bower.json'),
         this.destinationPath('bower.json')
       );
+      this._copyTpl('webpack.config.js', 'webpack.config.js');
+      this._copyTpl('server.js', 'server.js');
+      this._copyTpl('index.html', 'index.html');
+      this._copyTpl('js/index.js', 'js/index.js');
+      this.directory('css', 'css');
+      this.directory('js/actions', 'js/actions');
+      this.directory('js/components', 'js/components');
+      this.directory('js/constants', 'js/constants');
+      this.directory('js/containers', 'js/containers');
+      this.directory('js/data', 'js/data');
+      this.directory('js/reducers', 'js/reducers');
     },
 
     projectfiles: function () {
@@ -75,5 +86,13 @@ module.exports = yeoman.generators.Base.extend({
 
   install: function () {
     this.installDependencies();
+  },
+
+  _copyTpl: function (src, dest) {
+    this.fs.copyTpl(
+      this.templatePath(src),
+      this.destinationPath(dest),
+      this.props
+    );
   }
 });
