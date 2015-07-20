@@ -3,5 +3,9 @@
   "version": "0.0.0",
   "dependencies": {
     "redux": "^1.0.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "build": "webpack -p"
   }
 }
