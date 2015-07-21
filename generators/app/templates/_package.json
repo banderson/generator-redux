@@ -5,7 +5,7 @@
     "redux": "^1.0.0"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "DEBUG=true node server.js",
     "build": "webpack -p"
   }
 }
