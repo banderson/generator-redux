@@ -3,12 +3,12 @@ import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import {Provider} from 'react-redux';
 import * as reducers from '../reducers/index';
 
+import Home from '../components/Home';
+
 // Devtools
 import thunk from 'redux-thunk';
 import { devTools, persistState } from 'redux-devtools';
 import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
-
-import Home from '../components/Home';
 
 const finalCreateStore = compose(
   applyMiddleware(thunk),
