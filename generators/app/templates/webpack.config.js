@@ -18,13 +18,12 @@ module.exports = {
   ],
   module: {
     loaders: [
-      { test: /\.jsx?$/, loaders: ['react-hot', 'jsx?harmony'], exclude: /node_modules/ },
-      { test: /\.(jsx|js)$/, loader: 'babel-loader?experimental', exclude: /node_modules/ },
+      { test: /\.js$/, loaders: ['react-hot', 'babel'], exclude: /node_modules/ },
       { test: /\.css$/, loader: 'style-loader!css-loader' }
       // { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' } // inline base64 URLs for <=8k images, direct URLs for the rest
     ]
   },
   resolve: {
-    extensions: ['', '.js', 'jsx', '.json']
+    extensions: ['', '.js', '.json']
   }
 };

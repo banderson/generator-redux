@@ -59,6 +59,10 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('_bower.json'),
         this.destinationPath('bower.json')
       );
+      this.fs.copy(
+        this.templatePath('babelrc'),
+        this.destinationPath('.babelrc')
+      );
       this._copyTpl('webpack.config.js', 'webpack.config.js');
       this._copyTpl('server.js', 'server.js');
       this._copyTpl('index.html', 'index.html');
