@@ -1,4 +1,4 @@
-## NOTE: This is incomplete, but v0.2.0 should be ready for testing
+## NOTE: work in progress, but v0.2.* is ready for testing
 
 ## Redux and Redux-devtools CLI
 
@@ -7,7 +7,7 @@ This is intended to be the successor to my existing [generator-flux](https://git
 
 ## Getting Started
 
-### What is [Redux](gaearon/redux)?
+### What is [Redux](https://github.com/gaearon/redux)?
 
 It's ["Atomic Flux with hot reloading"](http://youtube.com/watch?v=xsSnOQynTHs), a next-generation take on the [Flux pattern](http://facebook.github.io/flux/) with a few core [philosophical design differences](https://github.com/gaearon/redux#philosophy--design-goals), including:
 
@@ -20,7 +20,7 @@ It's ["Atomic Flux with hot reloading"](http://youtube.com/watch?v=xsSnOQynTHs),
 ### Features include in this Generator:
 - [x] Redux functional application architecture
 - [x] [Redux-DevTools](https://github.com/gaearon/redux-devtools) configured and enabled when in dev mode
-- [x] [WebPack](http://webpack.com/) for build pipeline and dev server awesomeness
+- [x] [WebPack](http://webpack.github.io/) for build pipeline and dev server awesomeness
 - [x] [Babel](https://babeljs.io/) transpiler so you can use [bleeding edge language features](https://babeljs.io/docs/usage/experimental/)
 
 #### Coming soon:
