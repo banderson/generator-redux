@@ -81,6 +81,7 @@ module.exports = yeoman.generators.Base.extend({
       this.directory('js/containers', 'js/containers');
       this.directory('js/data', 'js/data');
       this.directory('js/reducers', 'js/reducers');
+      this.directory('js/utils', 'js/utils');
     },
 
     projectfiles: function () {
