@@ -13,10 +13,10 @@ module.exports = yeoman.generators.Base.extend({
     ));
 
     var prompts = [{
-      type: 'confirm',
-      name: 'someOption',
-      message: 'Would you like to enable this option?',
-      default: true
+      type: 'string',
+      name: 'port',
+      message: 'Which port would you like to run on?',
+      default: '3000'
     }];
 
     this.prompt(prompts, function (props) {
