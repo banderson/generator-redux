@@ -1,8 +1,9 @@
 import React from 'react';
-import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
+import {combineReducers} from 'redux';
 import {Provider} from 'react-redux';
-import * as reducers from '../reducers/index';
+import {createStore, renderDevTools} from '../utils/devTools';
 
+import * as reducers from '../reducers/index';
 import Home from '../components/Home';
 
 const store = createStore(combineReducers(reducers));
@@ -10,9 +11,17 @@ const store = createStore(combineReducers(reducers));
 export default React.createClass({
   render() {
     return (
-      <Provider store={store}>
-        {() => <Home /> }
-      </Provider>
+      <div>
+
+        {/* <Home /> is your app entry point */}
+        <Provider store={store}>
+          {() => <Home /> }
+        </Provider>
+
+        {/* only renders when running in DEV mode */
+          renderDevTools(store)
+        }
+      </div>
     );
   }
 });
