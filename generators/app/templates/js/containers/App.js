@@ -8,6 +8,8 @@ import thunk from 'redux-thunk';
 import { devTools, persistState } from 'redux-devtools';
 import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
 
+import Home from '../components/Home';
+
 const finalCreateStore = compose(
   applyMiddleware(thunk),
   devTools(),
@@ -22,7 +24,7 @@ export default React.createClass({
     return (
       <div>
         <Provider store={store}>
-          {() => <h1>Bootstrap your app here!</h1> }
+          {() => <Home /> }
         </Provider>
         <DebugPanel top right bottom>
           <DevTools store={store}
