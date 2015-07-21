@@ -1,5 +1,4 @@
 import React from 'react';
-import MainApp from './MainApp';
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import {Provider} from 'react-redux';
 import * as reducers from '../reducers/index';
@@ -23,7 +22,7 @@ export default React.createClass({
     return (
       <div>
         <Provider store={store}>
-          {() => <MainApp /> }
+          {() => <h1>Bootstrap your app here!</h1> }
         </Provider>
         <DebugPanel top right bottom>
           <DevTools store={store}
