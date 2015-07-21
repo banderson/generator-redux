@@ -1,13 +1,14 @@
 import React from 'react';
-import {createStore as originalCreateStore, applyMiddleware, compose} from 'redux';
-import thunk from 'redux-thunk';
-import {devTools, persistState} from 'redux-devtools';
-import {DevTools, DebugPanel, LogMonitor} from 'redux-devtools/lib/react';
+import {createStore as originalCreateStore} from 'redux';
 
 export let createStore = originalCreateStore;
 
 // override createStore to compose devtools functionality in DEV
 if (__DEV__) {
+  let thunk = require('redux-thunk');
+  let {applyMiddleware, compose} = require('redux');
+  let {devTools, persistState} = require('redux-devtools');
+
   createStore = compose(
     applyMiddleware(thunk),
     devTools(),
@@ -18,6 +19,7 @@ if (__DEV__) {
 
 export function renderDevTools(store) {
   if (__DEV__) {
+    let {DevTools, DebugPanel, LogMonitor} = require('redux-devtools/lib/react');
     return (
       <DebugPanel top right bottom>
         <DevTools store={store} monitor={LogMonitor} />
