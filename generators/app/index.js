@@ -2,6 +2,7 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
+var slug = require('slug');
 
 module.exports = yeoman.generators.Base.extend({
   prompting: function () {
@@ -14,6 +15,16 @@ module.exports = yeoman.generators.Base.extend({
 
     var prompts = [{
       type: 'string',
+      name: 'appName',
+      message: 'What\'s the name of your application?',
+      default: "My Redux App"
+    }, {
+      type: 'string',
+      name: 'appDesc',
+      message: 'Describe your application in one sentence:',
+      default: '...'
+    },{
+      type: 'string',
       name: 'port',
       message: 'Which port would you like to run on?',
       default: '3000'
@@ -21,6 +32,7 @@ module.exports = yeoman.generators.Base.extend({
 
     this.prompt(prompts, function (props) {
       this.props = props;
+      this.props.appSlug = slug(props.appName).toLowerCase();
       // To access props later use this.props.someOption;
 
       done();
@@ -51,10 +63,7 @@ module.exports = yeoman.generators.Base.extend({
 
   writing: {
     app: function () {
-      this.fs.copy(
-        this.templatePath('_package.json'),
-        this.destinationPath('package.json')
-      );
+      this._copyTpl('_package.json' ,'package.json');
       this.fs.copy(
         this.templatePath('_bower.json'),
         this.destinationPath('bower.json')
@@ -63,6 +72,7 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('babelrc'),
         this.destinationPath('.babelrc')
       );
+      this._copyTpl('README.md' ,'README.md');
       this._copyTpl('webpack.config.js', 'webpack.config.js');
       this._copyTpl('server.js', 'server.js');
       this._copyTpl('index.html', 'index.html');
