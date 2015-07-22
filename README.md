@@ -22,10 +22,10 @@ It's ["Atomic Flux with hot reloading"](http://youtube.com/watch?v=xsSnOQynTHs),
 - [x] [Redux-DevTools](https://github.com/gaearon/redux-devtools) configured and enabled when in dev mode
 - [x] [WebPack](http://webpack.github.io/) for build pipeline and dev server awesomeness
 - [x] [Babel](https://babeljs.io/) transpiler so you can use [bleeding edge language features](https://babeljs.io/docs/usage/experimental/)
+- [x] PostCSS preprocessor with autoprefixer support
 
 #### Coming soon:
 - [ ] React-router
-- [ ] SASS CSS preprocessor
 - [ ] Choice of UI Framework (Material UI, Elemental UI, React-Bootstrap?)
 - [ ] Storage options: `localStorage` and Firebase/Parse to start
 - [ ] Test scaffolding for actions, stores, and react components
