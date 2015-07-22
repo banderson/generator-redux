@@ -4,7 +4,7 @@ import styles from '../../css/app.css';
 export default React.createClass({
   render() {
     return (
-      <h1>Start your app here!</h1>
+      <h1 className={styles.text}>Start your app here!</h1>
     );
   }
 });

@@ -50,7 +50,8 @@ module.exports = yeoman.generators.Base.extend({
     buildTools: function() {
       this.npmInstall([
         'webpack', 'webpack-dev-server', 'css-loader', 'jsx-loader',
-        'babel-core', 'babel-loader', 'react-hot-loader', 'style-loader'
+        'babel-core', 'babel-loader', 'react-hot-loader', 'style-loader',
+        'extract-text-webpack-plugin', 'cssnext-loader'
       ], {'saveDev': true });
     },
 
