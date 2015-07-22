@@ -1,5 +1,3 @@
-## NOTE: work in progress, but v0.2.* is ready for testing
-
 ## Redux and Redux-devtools CLI
 
 This is intended to be the successor to my existing [generator-flux](https://github.com/banderson/generator-flux-react) that was based on vanilla FB flux.
