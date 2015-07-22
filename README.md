@@ -1,6 +1,6 @@
 ## Redux and Redux-devtools CLI
 
-This is intended to be the successor to my existing [generator-flux](https://github.com/banderson/generator-flux-react) that was based on vanilla FB flux.
+> CLI for Redux: next-gen functional Flux/React with devtools. This is intended to be the successor to my existing [generator-flux](https://github.com/banderson/generator-flux-react) that was based on vanilla FB flux.
 
 
 ## Getting Started
