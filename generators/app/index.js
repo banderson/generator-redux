@@ -66,6 +66,7 @@ module.exports = yeoman.generators.Base.extend({
     app: function () {
       this._copyTpl('_package.json' ,'package.json');
       this._copyTpl('npmrc' ,'.npmrc');
+      this._copyTpl('gitignore' ,'.gitignore');
       this._copyTpl('_bower.json', 'bower.json');
       this.fs.copy(
         this.templatePath('babelrc'),
