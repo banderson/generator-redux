@@ -1,6 +1,6 @@
 {
   "name": "generator-redux",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "CLI for Redux: next-gen functional Flux/React with devtools",
   "license": "MIT",
   "main": "app/index.js",
