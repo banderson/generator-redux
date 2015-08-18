@@ -1,6 +1,8 @@
 import * as ActionTypes from '../constants/ActionTypes';
 
-let defaultState = [];
+let defaultState = {
+  title: 'Home'
+};
 
 export default function(state = defaultState, action) {
   switch (action.type) {

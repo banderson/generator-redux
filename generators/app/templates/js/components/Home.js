@@ -1,10 +1,15 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import styles from '../../css/app.css';
 
-export default React.createClass({
+class Home extends Component {
   render() {
+    // injected from the Sample reducer
+    const {title} = this.props;
     return (
-      <h1 className={styles.text}>Start your app here!</h1>
+      <h1 className={styles.text}>Welcome {title}!</h1>
     );
   }
-});
+}
+
+export default connect(state => state.Sample)(Home)
