@@ -17,7 +17,7 @@ module.exports = yeoman.generators.Base.extend({
       type: 'string',
       name: 'appName',
       message: 'What\'s the name of your application?',
-      default: "My Redux App"
+      default: this.destinationPath().split(path.sep).pop()
     }, {
       type: 'string',
       name: 'appDesc',
