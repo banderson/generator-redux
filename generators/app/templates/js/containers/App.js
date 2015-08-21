@@ -1,12 +1,10 @@
 import React from 'react';
-import {combineReducers} from 'redux';
 import {Provider} from 'react-redux';
-import {createStore, renderDevTools} from '../utils/devTools';
-
-import * as reducers from '../reducers/index';
+import configureStore from '../store/configureStore';
 import Home from '../components/Home';
+import {renderDevTools} from '../utils/devTools';
 
-const store = createStore(combineReducers(reducers));
+const store = configureStore();
 
 export default React.createClass({
   render() {
