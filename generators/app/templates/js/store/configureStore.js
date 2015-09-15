@@ -6,13 +6,12 @@ let createStoreWithMiddleware;
 
 // Configure the dev tools when in DEV mode
 if (__DEV__) {
-  let {devTools, persistState} = require('redux-devtools');
+  const {devTools, persistState} = require('redux-devtools');
   createStoreWithMiddleware = compose(
     applyMiddleware(thunkMiddleware),
     devTools(),
-    persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/)),
-    createStore
-  );
+    persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
+  )(createStore);
 } else {
   createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore);
 }
