@@ -18,7 +18,19 @@ describe('redux:app', function () {
       'bower.json',
       'package.json',
       '.editorconfig',
-      '.jshintrc'
+      'index.html'
     ]);
+  });
+
+  it('create proper configStore file', function() {
+    var store = './js/store/configureStore.js';
+    assert.file(store);
+    assert.fileContent(store, "import {createStore, applyMiddleware, combineReducers, compose} from 'redux';");
+    assert.fileContent(store, "if (__DEV__) {");
+    assert.fileContent(store, "createStoreWithMiddleware = compose(");
+    assert.fileContent(store, "applyMiddleware(thunkMiddleware),");
+    assert.fileContent(store, "devTools()");
+    assert.fileContent(store, "persistState(window.location.href.match(/[?&]debug_session=([^&]+)\\b/))");
+    assert.fileContent(store, ")(createStore);");
   });
 });
