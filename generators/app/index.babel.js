@@ -66,6 +66,16 @@ export default Base.extend({
         name: 'port',
         message: 'Which port would you like to run on?',
         default: '3000'
+      },
+      {
+        type: 'list',
+        name: 'install',
+        message: 'Install dependencies?',
+        choices: [
+          {name: 'Yes', value: true},
+          {name: 'No', value: false}
+        ],
+        default: true
       }
     ];
 
@@ -142,10 +152,12 @@ export default Base.extend({
   },
 
   install() {
-    this.installDependencies({
-      npm: true,
-      bower: false
-    });
+    if (this.props.install) {
+      this.installDependencies({
+        npm: true,
+        bower: false
+      });
+    }
   }
 
 });
