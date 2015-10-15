@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+BABEL=./node_modules/babel/bin/babel.js
+DIR=generators/app
+INPUT=index.babel.js
+OUTPUT=index.js
+OPTS=
+
+$BABEL $OPTS $DIR/$INPUT -o $DIR/$OUTPUT

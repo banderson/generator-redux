@@ -1,11 +1,11 @@
 {
   "name": "<%= slug %>",
   "version": "0.1.0",
-  "dependencies": {},
-  "devDependencies": {},
   "scripts": {
     "start": "DEBUG=true node server.js",
     "build": "webpack -p --config webpack.production.js",
     "build-dev": "webpack -p"
-  }
+  },
+  "dependencies": <%- JSON.stringify(deps, null, 2).replace(/\n/g, "\n  ") %>,
+  "devDependencies": <%- JSON.stringify(devDeps, null, 2).replace(/\n/g, "\n  ") %>
 }

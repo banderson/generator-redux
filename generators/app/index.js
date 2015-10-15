@@ -1,92 +1,128 @@
 'use strict';
-var yeoman = require('yeoman-generator');
-var chalk = require('chalk');
-var yosay = require('yosay');
-var slug = require('slug');
-var path = require('path');
 
-module.exports = yeoman.generators.Base.extend({
-  prompting: function () {
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+require('isomorphic-fetch');
+
+var _path = require('path');
+
+var _path2 = _interopRequireDefault(_path);
+
+var _slug = require('slug');
+
+var _slug2 = _interopRequireDefault(_slug);
+
+var _chalk = require('chalk');
+
+var _chalk2 = _interopRequireDefault(_chalk);
+
+var _yosay = require('yosay');
+
+var _yosay2 = _interopRequireDefault(_yosay);
+
+var _es6Promise = require('es6-promise');
+
+var _yeomanGenerator = require('yeoman-generator');
+
+function getPackageVersions(prop, packages) {
+  var _this = this;
+
+  var done = this.async();
+  return _es6Promise.Promise.all(packages.map(function (pkg) {
+    return new _es6Promise.Promise(function (resolve) {
+      fetch('//registry.npmjs.org/' + pkg + '/latest').then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        var version = json.version;
+
+        resolve(pkg + ': ^' + version);
+      })['catch'](function () {
+        return resolve(null);
+      });
+    });
+  })).then(function (deps) {
+    _this.props[prop] = deps.filter(function (dep) {
+      return dep;
+    });
+    done();
+  });
+}
+
+function copy(src, dest) {
+  this.fs.copyTpl(this.templatePath(src), this.destinationPath(dest), this.props);
+}
+
+exports['default'] = _yeomanGenerator.Base.extend({
+  init: function init() {
+    this.copy = copy.bind(this);
+    this.getPackageVersions = getPackageVersions.bind(this);
+  },
+
+  prompting: function prompting() {
+    var _this2 = this;
+
     var done = this.async();
 
     // Have Yeoman greet the user.
-    this.log(yosay(
-      'Welcome to the pioneering ' + chalk.red('Redux') + ' generator!'
-    ));
+    this.log((0, _yosay2['default'])('Welcome to the pioneering ' + _chalk2['default'].red('Redux') + ' generator!'));
 
-    var prompts = [
-      {
-        type: 'string',
-        name: 'name',
-        message: 'What\'s the name of your application?',
-        default: this.destinationPath().split(path.sep).pop()
-      },
-      {
-        type: 'string',
-        name: 'description',
-        message: 'Describe your application in one sentence:',
-        default: '...'
-      },
-      {
-        type: 'string',
-        name: 'port',
-        message: 'Which port would you like to run on?',
-        default: '3000'
-      }
-    ];
+    var prompts = [{
+      type: 'string',
+      name: 'name',
+      message: "What's the name of your application?",
+      'default': this.destinationPath().split(_path2['default'].sep).pop()
+    }, {
+      type: 'string',
+      name: 'description',
+      message: 'Describe your application in one sentence:',
+      'default': '...'
+    }, {
+      type: 'string',
+      name: 'port',
+      message: 'Which port would you like to run on?',
+      'default': '3000'
+    }];
 
-    this.prompt(prompts, function (props) {
-      this.props = props;
-      this.props.slug = slug(props.name).toLowerCase();
+    this.prompt(prompts, function () {
+      var props = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
+      _this2.props = _extends({}, props, {
+        slug: (0, _slug2['default'])(props.name).toLowerCase()
+      });
       done();
-    }.bind(this));
+    });
   },
 
   configuring: {
-    deps: function() {
-      this.npmInstall([
-        'babel-core',
-        'es6-promise',
-        'whatwg-fetch',
-        'react',
-        'react-dom',
-        'redux',
-        'react-redux',
-        'redux-devtools',
-        'redux-thunk',
-        'lodash'
-      ], {'save': true});
+    deps: function deps() {
+      this.getPackageVersions('deps', ['babel-core', 'es6-promise', 'whatwg-fetch', 'react', 'react-dom', 'redux', 'react-redux', 'redux-devtools', 'redux-thunk', 'lodash']);
     },
 
-    devDeps: function() {
-      this.npmInstall([
-        'webpack',
-        'webpack-dev-server',
-        'css-loader',
-        'babel-core',
-        'babel-loader',
-        'react-hot-loader',
-        'style-loader',
-        'extract-text-webpack-plugin',
-        'cssnext-loader'
-      ], {'saveDev': true});
+    devDeps: function devDeps() {
+      this.getPackageVersions('devDeps', ['webpack', 'webpack-dev-server', 'css-loader', 'babel-core', 'babel-loader', 'react-hot-loader', 'style-loader', 'extract-text-webpack-plugin', 'cssnext-loader']);
     }
   },
 
   writing: {
-    app: function () {
-      this._copyTpl('_package.json', 'package.json');
-      this._copyTpl('_npmrc', '.npmrc');
-      this._copyTpl('_gitignore', '.gitignore');
-      this._copyTpl('_editorconfig', '.editorconfig');
-      this._copyTpl('_eslintrc', '.eslintrc');
-      this._copyTpl('_babelrc', '.babelrc');
-      this._copyTpl('README.md', 'README.md');
-      this._copyTpl('webpack.config.js', 'webpack.config.js');
-      this._copyTpl('webpack.production.js', 'webpack.production.js');
-      this._copyTpl('server.js', 'server.js');
-      this._copyTpl('index.html', 'index.html');
-      this._copyTpl('js/index.js', 'js/index.js');
+    app: function app() {
+      this.copy('_package.json', 'package.json');
+      this.copy('_npmrc', '.npmrc');
+      this.copy('_gitignore', '.gitignore');
+      this.copy('_editorconfig', '.editorconfig');
+      this.copy('_eslintrc', '.eslintrc');
+      this.copy('_babelrc', '.babelrc');
+      this.copy('README.md', 'README.md');
+      this.copy('webpack.config.js', 'webpack.config.js');
+      this.copy('webpack.production.js', 'webpack.production.js');
+      this.copy('server.js', 'server.js');
+      this.copy('index.html', 'index.html');
+      this.copy('js/index.js', 'js/index.js');
       this.directory('css', 'css');
       this.directory('js/actions', 'js/actions');
       this.directory('js/components', 'js/components');
@@ -96,21 +132,15 @@ module.exports = yeoman.generators.Base.extend({
       this.directory('js/data', 'js/data');
       this.directory('js/reducers', 'js/reducers');
       this.directory('js/utils', 'js/utils');
-    },
+    }
   },
 
-  install: function () {
+  install: function install() {
     this.installDependencies({
       npm: true,
       bower: false
     });
-  },
-
-  _copyTpl: function (src, dest) {
-    this.fs.copyTpl(
-      this.templatePath(src),
-      this.destinationPath(dest),
-      this.props
-    );
   }
+
 });
+module.exports = exports['default'];
