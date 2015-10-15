@@ -38,12 +38,11 @@ function getPackageVersions(prop, packages) {
     return new _es6Promise.Promise(function (resolve) {
       fetch('//registry.npmjs.org/' + pkg + '/latest').then(function (response) {
         return response.json();
-      }).then(function (json) {
-        var version = json.version;
-
-        resolve(pkg + ': ^' + version);
+      }).then(function (_ref) {
+        var version = _ref.version;
+        return resolve(pkg + ': ^' + version);
       })['catch'](function () {
-        return resolve(null);
+        return resolve(pkg + ': *');
       });
     });
   })).then(function (deps) {

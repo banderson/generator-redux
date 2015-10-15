@@ -13,11 +13,8 @@ function getPackageVersions(prop, packages) {
       return new Promise(resolve => {
         fetch(`//registry.npmjs.org/${pkg}/latest`)
           .then(response => response.json())
-          .then(json => {
-            const {version} = json;
-            resolve(`${pkg}: ^${version}`);
-          })
-          .catch(() => resolve(null));
+          .then(({version}) => resolve(`${pkg}: ^${version}`))
+          .catch(() => resolve(`${pkg}: *`));
       });
     }))
     .then(deps => {
