@@ -14,66 +14,74 @@ module.exports = yeoman.generators.Base.extend({
       'Welcome to the pioneering ' + chalk.red('Redux') + ' generator!'
     ));
 
-    var prompts = [{
-      type: 'string',
-      name: 'appName',
-      message: 'What\'s the name of your application?',
-      default: this.destinationPath().split(path.sep).pop()
-    }, {
-      type: 'string',
-      name: 'appDesc',
-      message: 'Describe your application in one sentence:',
-      default: '...'
-    },{
-      type: 'string',
-      name: 'port',
-      message: 'Which port would you like to run on?',
-      default: '3000'
-    }];
+    var prompts = [
+      {
+        type: 'string',
+        name: 'name',
+        message: 'What\'s the name of your application?',
+        default: this.destinationPath().split(path.sep).pop()
+      },
+      {
+        type: 'string',
+        name: 'description',
+        message: 'Describe your application in one sentence:',
+        default: '...'
+      },
+      {
+        type: 'string',
+        name: 'port',
+        message: 'Which port would you like to run on?',
+        default: '3000'
+      }
+    ];
 
     this.prompt(prompts, function (props) {
       this.props = props;
-      this.props.appSlug = slug(props.appName).toLowerCase();
-      // To access props later use this.props.someOption;
-
+      this.props.slug = slug(props.name).toLowerCase();
       done();
     }.bind(this));
   },
 
   configuring: {
-    libraries: function() {
+    deps: function() {
       this.npmInstall([
-        'react', 'react-redux', 'redux-devtools',
-        'redux-thunk', 'lodash'
-      ], {'save': true });
+        'babel-core',
+        'es6-promise',
+        'whatwg-fetch',
+        'react',
+        'react-dom',
+        'redux',
+        'react-redux',
+        'redux-devtools',
+        'redux-thunk',
+        'lodash'
+      ], {'save': true});
     },
 
-    buildTools: function() {
+    devDeps: function() {
       this.npmInstall([
-        'webpack', 'webpack-dev-server', 'css-loader', 'jsx-loader',
-        'babel-core', 'babel-loader', 'react-hot-loader', 'style-loader',
-        'extract-text-webpack-plugin', 'cssnext-loader'
-      ], {'saveDev': true });
-    },
-
-    polyfills: function() {
-      this.npmInstall([
-        'babel-runtime'//, 'es6-promise', 'whatwg-fetch'
-      ], {'save': true });
+        'webpack',
+        'webpack-dev-server',
+        'css-loader',
+        'babel-core',
+        'babel-loader',
+        'react-hot-loader',
+        'style-loader',
+        'extract-text-webpack-plugin',
+        'cssnext-loader'
+      ], {'saveDev': true});
     }
   },
 
   writing: {
     app: function () {
-      this._copyTpl('_package.json' ,'package.json');
-      this._copyTpl('npmrc' ,'.npmrc');
-      this._copyTpl('gitignore' ,'.gitignore');
-      this._copyTpl('_bower.json', 'bower.json');
-      this.fs.copy(
-        this.templatePath('babelrc'),
-        this.destinationPath('.babelrc')
-      );
-      this._copyTpl('README.md' ,'README.md');
+      this._copyTpl('_package.json', 'package.json');
+      this._copyTpl('_npmrc', '.npmrc');
+      this._copyTpl('_gitignore', '.gitignore');
+      this._copyTpl('_editorconfig', '.editorconfig');
+      this._copyTpl('_eslintrc', '.eslintrc');
+      this._copyTpl('_babelrc', '.babelrc');
+      this._copyTpl('README.md', 'README.md');
       this._copyTpl('webpack.config.js', 'webpack.config.js');
       this._copyTpl('webpack.production.js', 'webpack.production.js');
       this._copyTpl('server.js', 'server.js');
@@ -89,21 +97,13 @@ module.exports = yeoman.generators.Base.extend({
       this.directory('js/reducers', 'js/reducers');
       this.directory('js/utils', 'js/utils');
     },
-
-    projectfiles: function () {
-      this.fs.copy(
-        this.templatePath('editorconfig'),
-        this.destinationPath('.editorconfig')
-      );
-      this.fs.copy(
-        this.templatePath('eslintrc'),
-        this.destinationPath('.eslintrc')
-      );
-    }
   },
 
   install: function () {
-    this.installDependencies();
+    this.installDependencies({
+      npm: true,
+      bower: false
+    });
   },
 
   _copyTpl: function (src, dest) {

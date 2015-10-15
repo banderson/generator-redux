@@ -1,9 +1,8 @@
 {
-  "name": "<%= appSlug %>",
+  "name": "<%= slug %>",
   "version": "0.1.0",
-  "dependencies": {
-    "redux": "^1.0.0"
-  },
+  "dependencies": {},
+  "devDependencies": {},
   "scripts": {
     "start": "DEBUG=true node server.js",
     "build": "webpack -p --config webpack.production.js",
