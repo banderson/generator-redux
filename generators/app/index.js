@@ -43,7 +43,7 @@ module.exports = yeoman.generators.Base.extend({
   configuring: {
     libraries: function() {
       this.npmInstall([
-        'react', 'react-redux', 'redux-devtools',
+        'react', 'react-dom', 'react-redux', 'redux-devtools',
         'redux-thunk', 'lodash'
       ], {'save': true });
     },
