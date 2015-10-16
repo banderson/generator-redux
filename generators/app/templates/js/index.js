@@ -1,4 +1,5 @@
+import ReactDOM from 'react-dom';
 import React from 'react';
 import App from './containers/App';
 
-React.render(<App />, document.getElementById('main'));
+ReactDOM.render(<App />, document.getElementById('main'));
