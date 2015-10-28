@@ -4,6 +4,8 @@ Object.defineProperty(exports, '__esModule', {
   value: true
 });
 
+var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i['return']) _i['return'](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError('Invalid attempt to destructure non-iterable instance'); } }; })();
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -36,6 +38,14 @@ function getPackageVersions(prop, packages) {
   var done = this.async();
   return _es6Promise.Promise.all(packages.map(function (pkg) {
     return new _es6Promise.Promise(function (resolve) {
+      if (Array.isArray(pkg)) {
+        var _pkg = _slicedToArray(pkg, 2);
+
+        var _name = _pkg[0];
+        var version = _pkg[1];
+
+        return resolve(_name + ': ^' + version);
+      }
       fetch('//registry.npmjs.org/' + pkg + '/latest').then(function (response) {
         return response.json();
       }).then(function (_ref) {
@@ -106,7 +116,7 @@ exports['default'] = _yeomanGenerator.Base.extend({
 
   configuring: {
     deps: function deps() {
-      this.getPackageVersions('deps', ['babel-core', 'es6-promise', 'whatwg-fetch', 'react', 'react-dom', 'redux', 'react-redux', 'redux-devtools', 'redux-thunk', 'lodash']);
+      this.getPackageVersions('deps', ['babel-core', 'es6-promise', 'whatwg-fetch', 'lodash', ['react', '0.14.0'], ['react-dom', '0.14.0'], ['redux', '3.0.4'], ['react-redux', '4.0.0'], ['redux-devtools', '2.1.5'], ['redux-thunk', '1.0.0']]);
     },
 
     devDeps: function devDeps() {

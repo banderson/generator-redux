@@ -11,6 +11,10 @@ function getPackageVersions(prop, packages) {
   return Promise
     .all(packages.map(pkg => {
       return new Promise(resolve => {
+        if (Array.isArray(pkg)) {
+          const [name, version] = pkg;
+          return resolve(`${name}: ^${version}`);
+        }
         fetch(`//registry.npmjs.org/${pkg}/latest`)
           .then(response => response.json())
           .then(({version}) => resolve(`${pkg}: ^${version}`))
@@ -93,13 +97,13 @@ export default Base.extend({
           'babel-core',
           'es6-promise',
           'whatwg-fetch',
-          'react',
-          'react-dom',
-          'redux',
-          'react-redux',
-          'redux-devtools',
-          'redux-thunk',
-          'lodash'
+          'lodash',
+          ['react', '0.14.0'],
+          ['react-dom', '0.14.0'],
+          ['redux', '3.0.4'],
+          ['react-redux', '4.0.0'],
+          ['redux-devtools', '2.1.5'],
+          ['redux-thunk', '1.0.0']
         ]
       );
     },
