@@ -116,11 +116,11 @@ exports['default'] = _yeomanGenerator.Base.extend({
 
   configuring: {
     deps: function deps() {
-      this.getPackageVersions('deps', ['babel-core', 'es6-promise', 'whatwg-fetch', 'lodash', ['react', '0.14.0'], ['react-dom', '0.14.0'], ['redux', '3.0.4'], ['react-redux', '4.0.0'], ['redux-devtools', '2.1.5'], ['redux-thunk', '1.0.0']]);
+      this.getPackageVersions('deps', [['babel-core', '5.8.33'], 'es6-promise', 'whatwg-fetch', 'lodash', ['react', '0.14.0'], ['react-dom', '0.14.0'], ['redux', '3.0.4'], ['react-redux', '4.0.0'], ['redux-devtools', '2.1.5'], ['redux-thunk', '1.0.0']]);
     },
 
     devDeps: function devDeps() {
-      this.getPackageVersions('devDeps', ['webpack', 'webpack-dev-server', 'css-loader', 'babel-core', 'babel-loader', 'react-hot-loader', 'style-loader', 'extract-text-webpack-plugin', 'cssnext-loader']);
+      this.getPackageVersions('devDeps', ['webpack', 'webpack-dev-server', 'css-loader', ['babel-core', '5.8.33'], 'babel-loader', 'react-hot-loader', 'style-loader', 'extract-text-webpack-plugin', 'cssnext-loader']);
     }
   },
 
