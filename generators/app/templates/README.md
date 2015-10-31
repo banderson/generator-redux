@@ -1,7 +1,7 @@
 
-# <%= appName %> (<%= appSlug %>)
+# <%= name %> (<%= slug %>)
 
-> <%= appDesc %>
+> <%= description %>
 
 ## Running your project
 

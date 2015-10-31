@@ -13,7 +13,7 @@ export default React.createClass({
 
         {/* <Home /> is your app entry point */}
         <Provider store={store}>
-          {() => <Home /> }
+          <Home />
         </Provider>
 
         {/* only renders when running in DEV mode */
