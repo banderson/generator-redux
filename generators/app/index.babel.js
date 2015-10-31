@@ -94,7 +94,7 @@ export default Base.extend({
       this.getPackageVersions(
         'deps',
         [
-          'babel-core',
+          ['babel-core', '5.0.33']
           'es6-promise',
           'whatwg-fetch',
           'lodash',
