@@ -6,6 +6,7 @@ var devFlagPlugin = new webpack.DefinePlugin({
 });
 
 module.exports = {
+  devtool: 'cheap-module-eval-source-map',
   entry: [
     'webpack-dev-server/client?http://localhost:<%= port %>',
     'webpack/hot/only-dev-server',
