@@ -94,7 +94,7 @@ export default Base.extend({
       this.getPackageVersions(
         'deps',
         [
-          ['babel-core', '5.8.33'],
+          ['babel-core', '5.0.0'],
           'es6-promise',
           'whatwg-fetch',
           'lodash',
@@ -115,8 +115,8 @@ export default Base.extend({
           'webpack',
           'webpack-dev-server',
           'css-loader',
-          'babel-core',
-          'babel-loader',
+          ['babel-core', '5.0.0'],
+          ['babel-loader', '5.0.0'],
           'react-hot-loader',
           'style-loader',
           'extract-text-webpack-plugin',
