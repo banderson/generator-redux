@@ -120,7 +120,7 @@ exports['default'] = _yeomanGenerator.Base.extend({
     },
 
     devDeps: function devDeps() {
-      this.getPackageVersions('devDeps', ['webpack', 'webpack-dev-server', 'css-loader', ['babel-core', '5.0.0'], ['babel-loader', '5.0.0'], 'react-hot-loader', 'style-loader', 'extract-text-webpack-plugin', 'cssnext-loader']);
+      this.getPackageVersions('devDeps', ['webpack', 'webpack-dev-middleware', 'webpack-hot-middleware', 'css-loader', ['babel-core', '5.0.0'], ['babel-loader', '5.0.0'], 'babel-plugin-react-display-name', 'babel-plugin-react-transform', 'express', 'path', 'react-transform-catch-errors', 'react-transform-hmr', 'redbox-react', 'style-loader', 'extract-text-webpack-plugin', 'cssnext-loader']);
     }
   },
 
