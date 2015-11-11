@@ -44,21 +44,29 @@ function getPackageVersions(prop, packages) {
         var _name = _pkg[0];
         var version = _pkg[1];
 
-        return resolve(_name + ': ^' + version);
+        return resolve([_name, '^' + version]);
       }
       fetch('//registry.npmjs.org/' + pkg + '/latest').then(function (response) {
         return response.json();
       }).then(function (_ref) {
         var version = _ref.version;
-        return resolve(pkg + ': ^' + version);
+        return resolve([pkg, '^' + version]);
       })['catch'](function () {
-        return resolve(pkg + ': *');
+        return resolve([pkg, '*']);
       });
     });
   })).then(function (deps) {
-    _this.props[prop] = deps.filter(function (dep) {
-      return dep;
-    });
+    _this.props[prop] = deps.reduce(function (memo, curr) {
+      var _curr = _slicedToArray(curr, 2);
+
+      var pkg = _curr[0];
+      var version = _curr[1];
+
+      if (pkg && version) {
+        memo[pkg] = version;
+      }
+      return memo;
+    }, {});
     done();
   });
 }
