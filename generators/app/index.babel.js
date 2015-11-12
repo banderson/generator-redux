@@ -13,16 +13,22 @@ function getPackageVersions(prop, packages) {
       return new Promise(resolve => {
         if (Array.isArray(pkg)) {
           const [name, version] = pkg;
-          return resolve(`${name}: ^${version}`);
+          return resolve([name, `^${version}`]);
         }
         fetch(`//registry.npmjs.org/${pkg}/latest`)
           .then(response => response.json())
-          .then(({version}) => resolve(`${pkg}: ^${version}`))
-          .catch(() => resolve(`${pkg}: *`));
+          .then(({version}) => resolve([pkg, `^${version}`]))
+          .catch(() => resolve([pkg, '*']));
       });
     }))
     .then(deps => {
-      this.props[prop] = deps.filter(dep => dep);
+      this.props[prop] = deps.reduce((memo, curr) => {
+        const [pkg, version] = curr;
+        if (pkg && version) {
+          memo[pkg] = version;
+        }
+        return memo;
+      }, {});
       done();
     });
 }
