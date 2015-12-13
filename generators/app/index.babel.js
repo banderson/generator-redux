@@ -42,7 +42,7 @@ function copy(src, dest) {
 }
 
 export default Base.extend({
-  init() {
+  initializing() {
     this.copy = copy.bind(this);
     this.getPackageVersions = getPackageVersions.bind(this);
   },

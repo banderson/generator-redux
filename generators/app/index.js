@@ -76,7 +76,7 @@ function copy(src, dest) {
 }
 
 exports['default'] = _yeomanGenerator.Base.extend({
-  init: function init() {
+  initializing: function initializing() {
     this.copy = copy.bind(this);
     this.getPackageVersions = getPackageVersions.bind(this);
   },
