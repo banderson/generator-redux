@@ -1,9 +1,9 @@
-import 'isomorphic-fetch';
 import path from 'path';
 import slug from 'slug';
 import chalk from 'chalk';
 import yosay from 'yosay';
 import {Promise} from 'es6-promise';
+import 'isomorphic-fetch';
 import {Base} from 'yeoman-generator';
 
 function getPackageVersions(prop, packages) {
@@ -30,6 +30,8 @@ function getPackageVersions(prop, packages) {
         return memo;
       }, {});
       done();
+    }).catch(e => {
+      console.log('Something went wrong trying to install required modules. Try manually running `npm install` again.');
     });
 }
 

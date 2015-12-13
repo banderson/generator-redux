@@ -10,8 +10,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-require('isomorphic-fetch');
-
 var _path = require('path');
 
 var _path2 = _interopRequireDefault(_path);
@@ -29,6 +27,8 @@ var _yosay = require('yosay');
 var _yosay2 = _interopRequireDefault(_yosay);
 
 var _es6Promise = require('es6-promise');
+
+require('isomorphic-fetch');
 
 var _yeomanGenerator = require('yeoman-generator');
 
@@ -68,6 +68,8 @@ function getPackageVersions(prop, packages) {
       return memo;
     }, {});
     done();
+  })['catch'](function (e) {
+    console.log('Something went wrong trying to install required modules. Try manually running `npm install` again.');
   });
 }
 
