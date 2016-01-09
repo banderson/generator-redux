@@ -126,11 +126,11 @@ exports['default'] = _yeomanGenerator.Base.extend({
 
   configuring: {
     deps: function deps() {
-      this.getPackageVersions('deps', [['babel-core', '5.0.0'], 'es6-promise', 'whatwg-fetch', 'lodash', ['react', '0.14.0'], ['react-dom', '0.14.0'], ['redux', '3.0.4'], ['react-redux', '4.0.0'], ['redux-devtools', '2.1.5'], ['redux-thunk', '1.0.0']]);
+      this.getPackageVersions('deps', [['babel-core', '6.3.15'], 'es6-promise', 'whatwg-fetch', 'lodash', ['react', '0.14.0'], ['react-dom', '0.14.0'], ['redux', '3.0.4'], ['react-redux', '4.0.0'], ['redux-devtools', '2.1.5'], ['redux-thunk', '1.0.0']]);
     },
 
     devDeps: function devDeps() {
-      this.getPackageVersions('devDeps', ['webpack', 'webpack-dev-middleware', 'webpack-hot-middleware', 'css-loader', ['babel-core', '5.0.0'], ['babel-loader', '5.0.0'], 'babel-plugin-react-display-name', 'babel-plugin-react-transform', 'express', 'path', 'react-transform-catch-errors', 'react-transform-hmr', 'redbox-react', 'style-loader', 'extract-text-webpack-plugin', 'cssnext-loader']);
+      this.getPackageVersions('devDeps', [['babel-core', '6.3.15'], ['babel-eslint', '5.0.0-beta4'], ['babel-loader', '6.2.0'], ['babel-preset-es2015', '6.3.13'], ['babel-preset-react', '6.3.13'], ['babel-preset-react-hmre', '1.0.0'], ['babel-preset-stage-0', '6.3.13'], ['cross-env', '1.0.6'], 'css-loader', 'cssnext-loader', ['eslint', '1.10.3'], ['eslint-plugin-babel', '3.0.0'], ['eslint-plugin-react', '3.11.3'], ['eventsource-polyfill', '0.9.6'], 'express', 'extract-text-webpack-plugin', 'path', 'style-loader', 'webpack', 'webpack-dev-middleware', 'webpack-hot-middleware']);
     }
   },
 
