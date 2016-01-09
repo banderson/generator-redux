@@ -135,7 +135,9 @@ export default Base.extend({
           'redbox-react',
           'style-loader',
           'extract-text-webpack-plugin',
-          'cssnext-loader'
+          'cssnext-loader',
+          'cross-env',
+          ['webpack-sources', '0.1.0']
         ]
       );
     }
@@ -177,4 +179,3 @@ export default Base.extend({
   }
 
 });
-
