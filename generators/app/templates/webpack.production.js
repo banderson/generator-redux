@@ -1,3 +1,4 @@
+var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -10,7 +11,7 @@ module.exports = {
     './js/index.js'
   ],
   output: {
-    path: __dirname + '/static/',
+    path: path.join(__dirname, 'dist'),
     publicPath: '/static/',
     filename: 'bundle.js',
   },

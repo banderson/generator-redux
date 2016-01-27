@@ -102,7 +102,7 @@ export default Base.extend({
       this.getPackageVersions(
         'deps',
         [
-          ['babel-core', '5.0.0'],
+          ['babel-core', '6.3.15'],
           'es6-promise',
           'whatwg-fetch',
           'lodash',
@@ -120,21 +120,27 @@ export default Base.extend({
       this.getPackageVersions(
         'devDeps',
         [
+          ['babel-core', '6.3.15'],
+          ['babel-eslint', '5.0.0-beta4'],
+          ['babel-loader', '6.2.0'],
+          ['babel-preset-es2015', '6.3.13'],
+          ['babel-preset-react', '6.3.13'],
+          ['babel-preset-react-hmre', '1.0.0'],
+          ['babel-preset-stage-0', '6.3.13'],
+          ['cross-env', '1.0.6'],
+          'css-loader',
+          'cssnext-loader',
+          ['eslint', '1.10.3'],
+          ['eslint-plugin-babel', '3.0.0'],
+          ['eslint-plugin-react', '3.11.3'],
+          ['eventsource-polyfill', '0.9.6'],
+          'express',
+          'extract-text-webpack-plugin',
+          'path',
+          'style-loader',
           'webpack',
           'webpack-dev-middleware',
-          'webpack-hot-middleware',
-          'css-loader',
-          ['babel-core', '5.0.0'],
-          ['babel-loader', '5.0.0'],
-          ['babel-plugin-react-transform', '1.0.0'],
-          'express',
-          'path',
-          'react-transform-catch-errors',
-          'react-transform-hmr',
-          'redbox-react',
-          'style-loader',
-          'extract-text-webpack-plugin',
-          'cssnext-loader'
+          'webpack-hot-middleware'
         ]
       );
     }
@@ -176,4 +182,3 @@ export default Base.extend({
   }
 
 });
-
