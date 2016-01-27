@@ -1,5 +1,6 @@
 import path from 'path';
 import slug from 'slug';
+import os from 'os';
 import chalk from 'chalk';
 import yosay from 'yosay';
 import {Promise} from 'es6-promise';
@@ -98,6 +99,12 @@ export default Base.extend({
   },
 
   configuring: {
+    os() {
+      this.props.start = os.platform === 'win32'
+        ? 'set DEBUG=true | node server.js'
+        : 'DEBUG=true node server.js';
+    },
+
     deps() {
       this.getPackageVersions(
         'deps',

@@ -18,6 +18,10 @@ var _slug = require('slug');
 
 var _slug2 = _interopRequireDefault(_slug);
 
+var _os2 = require('os');
+
+var _os3 = _interopRequireDefault(_os2);
+
 var _chalk = require('chalk');
 
 var _chalk2 = _interopRequireDefault(_chalk);
@@ -125,6 +129,10 @@ exports['default'] = _yeomanGenerator.Base.extend({
   },
 
   configuring: {
+    os: function os() {
+      this.props.start = _os3['default'].platform === 'win32' ? 'set DEBUG=true | node server.js' : 'DEBUG=true node server.js';
+    },
+
     deps: function deps() {
       this.getPackageVersions('deps', [['babel-core', '6.3.15'], 'es6-promise', 'whatwg-fetch', 'lodash', ['react', '0.14.0'], ['react-dom', '0.14.0'], ['redux', '3.0.4'], ['react-redux', '4.0.0'], ['redux-devtools', '2.1.5'], ['redux-thunk', '1.0.0']]);
     },

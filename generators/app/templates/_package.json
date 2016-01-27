@@ -2,7 +2,7 @@
   "name": "<%= slug %>",
   "version": "0.1.0",
   "scripts": {
-    "start": "DEBUG=true node server.js",
+    "start": "<%= start %>",
     "build": "webpack -p --config webpack.production.js",
     "build-dev": "webpack -p"
   },
