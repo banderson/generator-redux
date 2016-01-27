@@ -145,7 +145,7 @@ export default Base.extend({
           'extract-text-webpack-plugin',
           'path',
           'style-loader',
-          'webpack',
+          ['webpack', '1.0.0'],
           'webpack-dev-middleware',
           'webpack-hot-middleware'
         ]
