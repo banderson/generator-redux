@@ -15,7 +15,7 @@ It's ["Atomic Flux with hot reloading"](http://youtube.com/watch?v=xsSnOQynTHs),
 ...
 
 
-### Features include in this Generator:
+### Features included in this Generator:
 - [x] Redux functional application architecture
 - [x] [Redux-DevTools](https://github.com/gaearon/redux-devtools) configured and enabled when in dev mode
 - [x] [WebPack](http://webpack.github.io/) for build pipeline and dev server awesomeness
