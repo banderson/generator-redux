@@ -1,6 +1,7 @@
-import React from 'react';
+import React from 'react'
+import {connect} from 'react-redux'
 
-export function renderDevTools(store) {
+export default ({store}) => {
   if (__DEV__) {
     let {DevTools, DebugPanel, LogMonitor} = require('redux-devtools/lib/react');
     return (
@@ -10,5 +11,5 @@ export function renderDevTools(store) {
     );
   }
 
-  return null;
-}
+  return {};
+};

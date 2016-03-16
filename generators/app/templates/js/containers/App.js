@@ -1,25 +1,24 @@
 import React from 'react';
 import {Provider} from 'react-redux';
-import configureStore from '../store/configureStore';
+import {Router, Route, IndexRoute, browserHistory} from 'react-router';
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+
 import Home from '../components/Home';
-import {renderDevTools} from '../utils/devTools';
+import Page from '../components/Page'
 
-const store = configureStore();
+export default ({store}) => {
 
-export default React.createClass({
-  render() {
-    return (
-      <div>
+  const history = syncHistoryWithStore(browserHistory, store);
 
-        {/* <Home /> is your app entry point */}
-        <Provider store={store}>
-          <Home />
-        </Provider>
+  return (
+    <main>
+      <Provider store={store}>
+        <Router history={history}>
+          <Route path="/" component={Home}/>
+          <Route path="page" component={Page}/>
+        </Router>
+      </Provider>
+    </main>
+  )
+};
 
-        {/* only renders when running in DEV mode */
-          renderDevTools(store)
-        }
-      </div>
-    );
-  }
-});
