@@ -117,6 +117,8 @@ export default Base.extend({
           ['react-dom', '0.14.0'],
           ['redux', '3.0.4'],
           ['react-redux', '4.0.0'],
+          ['react-router', '2.0.1'],
+          ['react-router-redux', '4.0.0'],
           ['redux-devtools', '2.1.5'],
           ['redux-thunk', '1.0.0']
         ]
