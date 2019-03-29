@@ -1,3 +1,5 @@
+# Obsolete: use [Create React App](https://github.com/facebook/create-react-app) / [Redux starter kit](https://github.com/reduxjs/redux-starter-kit)
+
 ## Redux and Redux-devtools CLI
 
 > CLI for Redux: next-gen functional Flux/React with devtools. This is intended to be the successor to my existing [generator-flux](https://github.com/banderson/generator-flux-react) that was based on vanilla FB flux.
